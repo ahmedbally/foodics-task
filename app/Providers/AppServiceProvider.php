@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Actions\DefaultProcessProductAction;
+use App\Contracts\ProcessProductAction;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,9 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        if ($this->app->isLocal()) {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-        }
+        $this->app->bind(
+            ProcessProductAction::class,
+            DefaultProcessProductAction::class
+        );
     }
 
     /**
@@ -21,6 +24,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
     }
 }

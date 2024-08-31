@@ -26,11 +26,11 @@ class ProductFactory extends Factory
             $product->ingredients()->sync(
                 Ingredient::inRandomOrder()
                     ->limit($count)
-                    ->pluck('id')
+                    ->get()
                     ->mapWithKeys(
-                        fn ($id) => [
-                            $id => [
-                                'quantity' => $this->faker->randomNumber(3)
+                        fn (Ingredient $ingredient) => [
+                            $ingredient->id => [
+                                'quantity' => $ingredient->initial_stock * 5 / 100
                             ]
                         ]
                     )

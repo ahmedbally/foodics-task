@@ -6,7 +6,6 @@ use App\Observers\IngredientObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 #[ObservedBy([IngredientObserver::class])]
 class Ingredient extends Model
@@ -19,11 +18,6 @@ class Ingredient extends Model
         'initial_stock',
         'alert_sent',
     ];
-
-    public function products(): BelongsToMany
-    {
-        return $this->belongsToMany(Product::class)->withPivot('quantity');
-    }
 
     public function isLowStock(): bool
     {

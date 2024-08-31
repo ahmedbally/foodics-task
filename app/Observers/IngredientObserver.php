@@ -19,11 +19,13 @@ class IngredientObserver
     {
         if (
             $ingredient->wasChanged('stock') &&
-            $ingredient->isLowStock()
+            $ingredient->isLowStock() &&
+            ! $ingredient->alert_sent
         ) {
             Mail::to(stock_notification_email())->send(new IngredientLowStockMail($ingredient));
-            $ingredient->alert_sent = true;
-            $ingredient->save();
+            $ingredient->updateQuietly([
+                'alert_sent' => true,
+            ]);
         }
     }
 }

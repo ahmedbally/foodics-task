@@ -25,6 +25,15 @@ class OrderRequest extends FormRequest
         ];
     }
 
+    public function attributes(): array
+    {
+        return [
+            'products' => 'products',
+            'products.*.product_id' => 'product',
+            'products.*.quantity' => 'quantity',
+        ];
+    }
+
     public function authorize(): bool
     {
         return true;

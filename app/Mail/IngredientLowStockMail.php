@@ -31,9 +31,4 @@ class IngredientLowStockMail extends Mailable implements ShouldQueue
             markdown: 'emails.ingredient-low-stock',
         );
     }
-
-    public function attachments(): array
-    {
-        return [];
-    }
 }
