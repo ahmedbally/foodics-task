@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "80cf8b44-fd7f-4ad3-bffa-8ccb49d1e07a",
+		"name": "Foodics Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25455414"
+	},
+	"item": [
+		{
+			"name": "Create Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"products\" : [\r\n        {\r\n            \"product_id\": 0,\r\n            \"quantity\": 10\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/orders",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\" : [\r\n        {\r\n            \"product_id\": 1,\r\n            \"quantity\": 10\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/orders",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.4"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.17"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 31 Aug 2024 04:40:12 GMT"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"products\": [\n            {\n                \"id\": 1,\n                \"name\": \"Burger\",\n                \"quantity\": 10,\n                \"created_at\": \"2024-08-31T04:39:49.000000Z\",\n                \"updated_at\": \"2024-08-31T04:39:49.000000Z\"\n            }\n        ],\n        \"created_at\": \"2024-08-31T04:40:12.000000Z\",\n        \"updated_at\": \"2024-08-31T04:40:12.000000Z\"\n    }\n}"
+				},
+				{
+					"name": "Not Enough Stock Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\" : [\r\n        {\r\n            \"product_id\": 1,\r\n            \"quantity\": 10\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/orders",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.4"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.17"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 31 Aug 2024 04:43:17 GMT"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Product Burger can't be processed because ingredient Onion stock not enough\",\n    \"exception\": \"App\\\\Exceptions\\\\IngredientNotEnoughStockException\",\n    \"file\": \"/var/www/app/Actions/DefaultProcessProductAction.php\",\n    \"line\": 29,\n    \"trace\": [\n        {\n            \"file\": \"/var/www/app/Actions/DefaultProcessProductAction.php\",\n            \"line\": 20,\n            \"function\": \"checkIngredientStock\",\n            \"class\": \"App\\\\Actions\\\\DefaultProcessProductAction\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Relations/BelongsToMany.php\",\n            \"line\": 1063,\n            \"function\": \"App\\\\Actions\\\\{closure}\",\n            \"class\": \"App\\\\Actions\\\\DefaultProcessProductAction\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Relations/BelongsToMany.php\",\n            \"line\": 975,\n            \"function\": \"Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsToMany\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php\",\n            \"line\": 59,\n            \"function\": \"Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsToMany\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Relations/BelongsToMany.php\",\n            \"line\": 972,\n            \"function\": \"chunk\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Relations/BelongsToMany.php\",\n            \"line\": 1061,\n            \"function\": \"chunk\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsToMany\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/app/Actions/DefaultProcessProductAction.php\",\n            \"line\": 19,\n            \"function\": \"each\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsToMany\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/lorisleiva/laravel-actions/src/Concerns/AsObject.php\",\n            \"line\": 19,\n            \"function\": \"handle\",\n            \"class\": \"App\\\\Actions\\\\DefaultProcessProductAction\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/app/Actions/CreateOrderAction.php\",\n            \"line\": 59,\n            \"function\": \"run\",\n            \"class\": \"App\\\\Actions\\\\DefaultProcessProductAction\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php\",\n            \"line\": 257,\n            \"function\": \"App\\\\Actions\\\\{closure}\",\n            \"class\": \"App\\\\Actions\\\\CreateOrderAction\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/app/Actions/CreateOrderAction.php\",\n            \"line\": 56,\n            \"function\": \"each\",\n            \"class\": \"Illuminate\\\\Support\\\\Collection\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/app/Actions/CreateOrderAction.php\",\n            \"line\": 33,\n            \"function\": \"attachProductsToOrder\",\n            \"class\": \"App\\\\Actions\\\\CreateOrderAction\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php\",\n            \"line\": 30,\n            \"function\": \"App\\\\Actions\\\\{closure}\",\n            \"class\": \"App\\\\Actions\\\\CreateOrderAction\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php\",\n            \"line\": 456,\n            \"function\": \"transaction\",\n            \"class\": \"Illuminate\\\\Database\\\\Connection\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php\",\n            \"line\": 357,\n            \"function\": \"__call\",\n            \"class\": \"Illuminate\\\\Database\\\\DatabaseManager\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/app/Actions/CreateOrderAction.php\",\n            \"line\": 28,\n            \"function\": \"__callStatic\",\n            \"class\": \"Illuminate\\\\Support\\\\Facades\\\\Facade\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"/var/www/vendor/lorisleiva/laravel-actions/src/Concerns/AsObject.php\",\n            \"line\": 19,\n            \"function\": \"handle\",\n            \"class\": \"App\\\\Actions\\\\CreateOrderAction\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/app/Http/Controllers/API/CreateOrder.php\",\n            \"line\": 16,\n            \"function\": \"run\",\n            \"class\": \"App\\\\Actions\\\\CreateOrderAction\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php\",\n            \"line\": 46,\n            \"function\": \"__invoke\",\n            \"class\": \"App\\\\Http\\\\Controllers\\\\API\\\\CreateOrder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Routing/Route.php\",\n            \"line\": 260,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\ControllerDispatcher\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Routing/Route.php\",\n            \"line\": 206,\n            \"function\": \"runController\",\n            \"class\": \"Illuminate\\\\Routing\\\\Route\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 808,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Routing\\\\Route\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 144,\n            \"function\": \"Illuminate\\\\Routing\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php\",\n            \"line\": 51,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 119,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 807,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 786,\n            \"function\": \"runRouteWithinStack\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 750,\n            \"function\": \"runRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 739,\n            \"function\": \"dispatchToRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php\",\n            \"line\": 201,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 144,\n            \"function\": \"Illuminate\\\\Foundation\\\\Http\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php\",\n            \"line\": 31,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php\",\n            \"line\": 51,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php\",\n            \"line\": 27,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\ValidatePostSize\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php\",\n            \"line\": 110,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php\",\n            \"line\": 62,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\HandleCors\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php\",\n            \"line\": 57,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 119,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php\",\n            \"line\": 176,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php\",\n            \"line\": 145,\n            \"function\": \"sendRequestThroughRouter\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/vendor/laravel/framework/src/Illuminate/Foundation/Application.php\",\n            \"line\": 1188,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/var/www/public/index.php\",\n            \"line\": 17,\n            \"function\": \"handleRequest\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Application\",\n            \"type\": \"->\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Invalid Product Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\" : [\r\n        {\r\n            \"product_id\": 0,\r\n            \"quantity\": 10\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/orders",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.4"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.17"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 31 Aug 2024 04:44:05 GMT"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"The selected product is invalid.\",\n    \"errors\": {\n        \"products.0.product_id\": [\n            \"The selected product is invalid.\"\n        ]\n    }\n}"
+				}
+			]
+		}
+	]
+}
