@@ -1,6 +1,6 @@
 <?php
 
-namespace Actions;
+namespace Tests\Unit\Actions;
 
 use App\Actions\CreateOrderAction;
 use App\Exceptions\IngredientNotEnoughStockException;
