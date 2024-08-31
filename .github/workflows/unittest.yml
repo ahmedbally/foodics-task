@@ -17,7 +17,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_DATABASE: foodics_task_test
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: ""
         ports:
           - 3306:3306
         options: >-
@@ -45,13 +45,10 @@ jobs:
       - name: Generate application key
         run: php artisan key:generate
 
-      - name: Install MySQL client
-        run: sudo apt-get install -y mysql-client
-
       - name: Wait for MySQL to be available
         run: |
           for i in {1..10}; do
-            if mysqladmin ping -h db -u root -proot --silent; then
+            if mysqladmin ping -h 127.0.0.1 -u root --password="" --silent; then
               echo "MySQL is available"
               break
             fi
@@ -60,7 +57,7 @@ jobs:
           done
 
       - name: Create Test Database
-        run: mysql -h db -u root -proot -e "CREATE DATABASE IF NOT EXISTS foodics_task_test;"
+        run: mysql -h 127.0.0.1 -u root --password="" -e "CREATE DATABASE IF NOT EXISTS foodics_task_test;"
 
       - name: Run migrations
         run: php artisan migrate --force
