@@ -18,7 +18,7 @@ Foodics Task is a Laravel-based API application designed to manage ingredients a
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/yourusername/foodics-task.git
+    git clone https://github.com/ahmedbally/foodics-task.git
     cd foodics-task
     ```
 
@@ -36,7 +36,7 @@ Foodics Task is a Laravel-based API application designed to manage ingredients a
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/yourusername/foodics-task.git
+    git clone https://github.com/ahmedbally/foodics-task.git
     cd foodics-task
     ```
 
