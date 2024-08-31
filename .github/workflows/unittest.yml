@@ -13,18 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      mysql:
+      db:
         image: mysql:8.0
+        container_name: foodics_task_db
         env:
           MYSQL_DATABASE: foodics_task_test
           MYSQL_ROOT_PASSWORD: root
         ports:
           - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping --silent"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
         volumes:
           - /var/lib/mysql
 
