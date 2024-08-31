@@ -22,12 +22,7 @@ Foodics Task is a Laravel-based API application designed to manage ingredients a
     cd foodics-task
     ```
 
-2. **Copy the `.env` file:**
-    ```sh
-    cp .env.example .env
-    ```
-
-3. **Build and start the containers:**
+2. **Build and start the containers:**
     ```sh
     docker-compose up --build -d
     ```
