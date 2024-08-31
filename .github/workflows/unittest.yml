@@ -15,7 +15,6 @@ jobs:
     services:
       db:
         image: mysql:8.0
-        container_name: foodics_task_db
         env:
           MYSQL_DATABASE: foodics_task_test
           MYSQL_ROOT_PASSWORD: root
